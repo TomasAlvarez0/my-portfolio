@@ -7,7 +7,7 @@
         <i class={step.icon}></i>
     </div>
     <h4 class="text-xl md:text-2xl">{step.name}</h4>
-    <p class="text-base sm:text-lg opacity-70 group-hover:opacity-100 duration-200">
+    <div class="text-base sm:text-lg opacity-70 group-hover:opacity-100 duration-200">
         <slot />
-    </p>
+    </div>
 </div>

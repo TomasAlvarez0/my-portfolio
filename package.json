@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"build:gh-pages": "NODE_ENV=production vite build",
+		"build:gh-pages": "set NODE_ENV=production && vite build",
+		"build:gh-pages:unix": "NODE_ENV=production vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''"
 	},
