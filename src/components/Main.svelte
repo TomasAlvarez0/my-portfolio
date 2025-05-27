@@ -51,9 +51,9 @@
             class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
         >
             <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">
-                Hi! I'm <span class="poppins text-violet-400">Samuel</span> Oak
-                <br />Full Stack
-                <span class="poppins text-violet-400">Developer</span>
+                Hi! I'm <span class="poppins text-violet-400">Tomas</span>Alvarez
+                <br />systems 
+                <span class="poppins text-violet-400">engineer</span>
             </h2>
             <p class="text-base sm:text-lg md:text-xl">
                 My <span class="text-violet-400"> favorite tech</span> includes JavaScript
@@ -72,7 +72,7 @@
         <div class="relative shadow-2xl grid place-items-center ">
             <img
                 src={"images/profile.png"}
-                alt="Zetane Engine"
+                alt="Tomas Alvarez profile pic"
                 class="object-cover z-[2] max-h-[70vh]"
             />
         </div>
