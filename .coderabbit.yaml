@@ -1,0 +1,62 @@
+version: 1
+
+# Configuración general
+settings:
+  # Habilitar revisión automática de PRs
+  auto_review: true
+  # Habilitar comentarios automáticos
+  auto_comment: true
+  # Habilitar sugerencias de mejora
+  suggest_improvements: true
+
+# Reglas específicas para el proyecto
+rules:
+  # Revisión de código
+  code_review:
+    enabled: true
+    # Nivel de detalle de la revisión (low, medium, high)
+    detail_level: high
+    # Lenguajes a revisar
+    languages:
+      - javascript
+      - typescript
+      - svelte
+      - css
+      - html
+
+  # Revisión de seguridad
+  security:
+    enabled: true
+    # Nivel de detalle de la revisión de seguridad
+    detail_level: high
+
+  # Revisión de rendimiento
+  performance:
+    enabled: true
+    # Nivel de detalle de la revisión de rendimiento
+    detail_level: medium
+
+  # Revisión de accesibilidad
+  accessibility:
+    enabled: true
+    # Nivel de detalle de la revisión de accesibilidad
+    detail_level: medium
+
+# Configuración de notificaciones
+notifications:
+  # Notificar en PR
+  pull_request: true
+  # Notificar en issues
+  issues: true
+  # Notificar en comentarios
+  comments: true
+
+# Configuración de integración
+integrations:
+  # Integración con GitHub
+  github:
+    enabled: true
+    # Revisar PRs automáticamente
+    auto_review_prs: true
+    # Comentar en PRs automáticamente
+    auto_comment_prs: true 
