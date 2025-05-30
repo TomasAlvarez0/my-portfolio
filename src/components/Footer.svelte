@@ -36,10 +36,9 @@
             <div>
                 <h4 class="text-white font-semibold mb-4">Enlaces</h4>
                 <ul class="space-y-2">
-                    <li><a href="#inicio" class="text-slate-400 hover:text-violet-400 transition-colors">Inicio</a></li>
-                    <li><a href="#sobre-mi" class="text-slate-400 hover:text-violet-400 transition-colors">Sobre mí</a></li>
-                    <li><a href="#proyectos" class="text-slate-400 hover:text-violet-400 transition-colors">Proyectos</a></li>
-                    <li><a href="#contacto" class="text-slate-400 hover:text-violet-400 transition-colors">Contacto</a></li>
+                    <li><a href="#introPage" class="text-slate-400 hover:text-violet-400 transition-colors">Inicio</a></li>
+                    <li><a href="#about" class="text-slate-400 hover:text-violet-400 transition-colors">Sobre mí</a></li>
+                    <li><a href="#projects" class="text-slate-400 hover:text-violet-400 transition-colors">Proyectos</a></li>
                 </ul>
             </div>
         </div>
