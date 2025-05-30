@@ -3,10 +3,10 @@
 
     let steps = [
         {
-            name: "Smoljames Store",
-            icon: "fa-solid fa-cart-shopping",
+            name: "Conectando corazones",
+            icon: "fa-solid fa-hands-helping",
             description:
-                "Smoljames Store is a merchandising store created with Next.js, Commerce.js & Stripe! Commerce.js is a CMS for managing project and Stripe is used for all transaction handling.",
+                "Conectando corazones is a platform for connecting people in need with those who can help. It is a platform for connecting people in need with those who can help.",
         },
         {
             name: "Utlimate Todos",
@@ -111,15 +111,14 @@
             <p>Watch the video</p>
         </a>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
+            <a href="https://conectando-corazones.vercel.app/" target="_blank" >
             <Step step={steps[0]}>
                 <p>
-                    Smoljames Store is a a merchanising store created with <strong
-                        class="text-violet-400"
-                        >Next.js, Commerce.js, Stripe & Node.js + Express.js!</strong
-                    > Commerce.js is a product CMS and Stripe is used for all transaction
-                    handling.
-                </p>
+                    {steps[0].description} Using:<strong
+                        class="text-violet-400"> Svelte, TailwindCSS, SvelteKit, PostgreSQL </strong
+                    >   Final project of the career, in a group with 2 collaborators</p>
             </Step>
+            </a>
             <Step step={steps[1]}>
                 <p>
                     Ultimate Todos is a Full Stack <strong
