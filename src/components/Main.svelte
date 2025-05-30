@@ -111,7 +111,7 @@
             <p>Watch the video</p>
         </a>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
-            <a href="https://conectando-corazones.vercel.app/" target="_blank" >
+            <a href="https://conectando-corazones.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Conectando corazones project">
             <Step step={steps[0]}>
                 <p>
                     {steps[0].description} Using:<strong
