@@ -9,13 +9,13 @@
                 "Conectando corazones is a platform for connecting people in need with those who can help. It is a platform for connecting people in need with those who can help.",
         },
         {
-            name: "Utlimate Todos",
+            name: "Smart Marketing",
             icon: "fa-solid fa-list-check",
             description:
-                "Test for model robustness with customized test profiles and receive exhaustive reporting on the performance and potential vulnerabilities of your model.",
+                "Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.",
         },
         {
-            name: "Pokédex",
+            name: "Strategic Analysis of URG",
             icon: "fa-solid fa-diagram-project",
             description:
                 "Augment your datasets with our filters and dataset manipulations to ensure your models are trained on the highest quality datasets (coming soon).",
@@ -27,17 +27,17 @@
             metric: "10x",
             name: "a self taught developer",
             description:
-                "I taught myself to code using free online resources and absolutely fell in love with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting of with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.",
+                "I’m an advanced Information Systems Engineering student (expected graduation: Dec. 2025) with a strong interest in data analysis for decision-making. I’m currently improving my SQL skills and training in Power BI. I’m looking for my first professional experience in IT, where I can contribute with commitment, continuous learning, teamwork, and reliability.",
         },
         {
-            name: "a product design & UX fanatic",
+            name: "Passionate About Social Impact and Innovation",
             description:
-                "Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences.",
+                "Through academic and volunteer projects, I’ve applied my technical and strategic knowledge to real-world challenges. Projects like Conectando Corazones show my interest in using technology to solve social problems, while work in Smart Marketing and Strategic Analysis demonstrates my ability to apply data science and business tools effectively.",
         },
         {
-            name: "an excellent communicator",
+            name: "Strong Communicator and Team Player",
             description:
-                "Communication is key and it's a paramount value of mine. I believe in transparency and constructive communication above all else. This helps me develop deep relationships and ensures my effectiveness and productivity in any work space with any team.",
+                "I value effective communication, teamwork, and leadership, developed through my involvement in Rotaract and collaborative academic projects. I’m proactive, responsible, and organized—skills that I bring to any environment, especially when working on impactful solutions.",
         },
     ];
 </script>
@@ -102,14 +102,7 @@
                 Curious to <span class="poppins text-violet-400">see</span> my work?
             </h3>
         </div>
-        <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            class="mx-auto px-4 py-2 rounded-md border border-solid border-white flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
-        >
-            <i class="fa-regular fa-circle-play"></i>
-            <p>Watch the video</p>
-        </a>
+        
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
             <a href="https://conectando-corazones.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Conectando corazones project">
             <Step step={steps[0]}>
@@ -121,26 +114,21 @@
             </a>
             <Step step={steps[1]}>
                 <p>
-                    Ultimate Todos is a Full Stack <strong
-                        class="text-violet-400">Next.js</strong
+                    Data Mining with <strong
+                        class="text-violet-400">Python</strong
                     >,
-                    <strong class="text-violet-400">Node.js + Express.js</strong
+                    <strong class="text-violet-400">RapidMiner & SPSS Statistics</strong
                     >
-                    & <strong class="text-violet-400">Firebase</strong> CRUD application
-                    that allows a user to login, manage a tidy and efficacious todo
-                    list, and persist this information across devices.
+                    Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.
                 </p>
             </Step>
             <Step step={steps[2]}>
                 <p>
-                    The Pokédex is a <strong class="text-violet-400"
-                        >SvelteKit & TailwindCSS</strong
+                    Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
+                       > PESTLE, Porter's Five Forces, and the Value Chain</strong
                     >
-                    web application, hosted on
-                    <strong class="text-violet-400">Netlify</strong>, that
-                    consumes and caches the
-                    <strong class="text-violet-400">Pokémon API</strong>
-                    to display all Pokémon information. Gotta catch them all!
+                    . The project included identifying a key problem and proposing a viable solution, including 
+                    <strong class="text-violet-400">feasibility analysis, budgeting, and solution implementation</strong>.                    
                 </p>
             </Step>
         </div>
@@ -249,7 +237,7 @@
                     <tr class="border-t border-solid border-slate-200">
                         <td
                             class="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-sm"
-                            >Programming Ability</td
+                            >Logical Reasoning</td
                         >
                         <td><i class="fa-solid fa-check text-slate-500"></i></td>
                         <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
