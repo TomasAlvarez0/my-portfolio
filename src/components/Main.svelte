@@ -25,21 +25,66 @@
     let benefits = [
         {
             metric: "10x",
-            name: "a self taught developer",
+            name: "Systems Engineering Student",
             description:
-                "I’m an advanced Information Systems Engineering student (expected graduation: Dec. 2025) with a strong interest in data analysis for decision-making. I’m currently improving my SQL skills and training in Power BI. I’m looking for my first professional experience in IT, where I can contribute with commitment, continuous learning, teamwork, and reliability.",
+                "Currently pursuing a degree in Systems Engineering (expected graduation: Dec. 2025) with a strong passion for technology and sports. I'm constantly learning new technologies, improving my programming skills, and seeking opportunities to apply my knowledge in real-world projects.",
         },
         {
-            name: "Passionate About Social Impact and Innovation",
+            name: "Academic Excellence",
             description:
-                "Through academic and volunteer projects, I’ve applied my technical and strategic knowledge to real-world challenges. Projects like Conectando Corazones show my interest in using technology to solve social problems, while work in Smart Marketing and Strategic Analysis demonstrates my ability to apply data science and business tools effectively.",
+                "Maintaining a strong academic performance with a General Average of 8.12 (eight point twelve) as of February 19, 2025. This reflects my dedication to academic excellence and continuous improvement in my engineering studies.",
+            pdfUrl: "/ANALITICO 2025.pdf",
+            pdfButtonText: "View Academic Record"
         },
         {
-            name: "Strong Communicator and Team Player",
+            name: "Passionate About Technology and Sports",
             description:
-                "I value effective communication, teamwork, and leadership, developed through my involvement in Rotaract and collaborative academic projects. I’m proactive, responsible, and organized—skills that I bring to any environment, especially when working on impactful solutions.",
+                "I find the perfect balance between my love for technology and sports. Whether I'm coding a new application or playing my favorite sport, I bring the same dedication, teamwork, and strategic thinking to everything I do. This combination gives me a unique perspective on problem-solving and collaboration.",
+        },
+        {
+            name: "Committed to Continuous Learning",
+            description:
+                "As a student, I'm always eager to learn and grow. I actively participate in academic projects, contribute to open-source initiatives, and stay updated with the latest technology trends. My goal is to make a meaningful impact in the tech industry while maintaining an active and healthy lifestyle.",
         },
     ];
+
+    // Lógica para el contador de visitas con CountAPI
+    import { onMount } from 'svelte';
+    
+    let visitCount = 0;
+    let isLoading = true;
+    
+    onMount(async () => {
+        try {
+            // Delay para mostrar la animación de carga
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const res = await fetch('https://api.countapi.xyz/hit/tomi-portfolio/visits');
+            const data = await res.json();
+            
+            isLoading = false;
+            
+            // Animación de conteo progresivo
+            const targetCount = data.value;
+            const duration = 2000; // 2 segundos
+            const steps = 60;
+            const increment = targetCount / steps;
+            
+            let currentCount = 0;
+            const counter = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= targetCount) {
+                    currentCount = targetCount;
+                    clearInterval(counter);
+                }
+                visitCount = Math.floor(currentCount);
+            }, duration / steps);
+            
+        } catch (e) {
+            isLoading = false;
+            visitCount = 'Error';
+        }
+    });
 </script>
 
 <main class="flex flex-col flex-1 p-4 ">
@@ -56,18 +101,19 @@
                 <span class="poppins text-violet-400">engineer</span>
             </h2>
             <p class="text-base sm:text-lg md:text-xl">
-                My <span class="text-violet-400"> favorite tech</span> includes JavaScript
-                (NEXT.JS or SvelteKit), TailwindCSS, Node.js + Express.js & PostgreSQL
-                or Firebase/Firestore!
+                Systems Engineering student passionate about <span class="text-violet-400">technology</span> and <span class="text-violet-400">sports</span>. Currently learning and exploring the world of programming, software development, and system analysis. Always eager to take on new challenges and grow professionally.
             </p>
-            <button
+            <a
+                href="https://wa.link/vqi4tk"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950"
             >
                 <div
                     class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
                 ></div>
-                <h4 class="relative z-9">Get in touch &rarr;</h4>
-            </button>
+                <h4 class="relative z-9">Contact me &rarr;</h4>
+            </a>
         </div>
         <div class="relative shadow-2xl grid place-items-center ">
             <img
@@ -104,15 +150,13 @@
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
-            <a href="https://conectando-corazones.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Visit Conectando corazones project">
-            <Step step={steps[0]}>
+            <Step step={steps[0]} pdfUrl="https://conectando-corazones.vercel.app/" pdfButtonText="Visit Website">
                 <p>
                     {steps[0].description} Using:<strong
                         class="text-violet-400"> Svelte, TailwindCSS, SvelteKit, PostgreSQL </strong
                     >   Final project of the career, in a group with 2 collaborators</p>
             </Step>
-            </a>
-            <Step step={steps[1]}>
+            <Step step={steps[1]} pdfUrl="#" pdfButtonText="View Project Details">
                 <p>
                     Data Mining with <strong
                         class="text-violet-400">Python</strong
@@ -122,7 +166,7 @@
                     Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.
                 </p>
             </Step>
-            <Step step={steps[2]}>
+            <Step step={steps[2]} pdfUrl="/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
                 <p>
                     Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
                        > PESTLE, Porter's Five Forces, and the Value Chain</strong
@@ -180,6 +224,21 @@
                             {benefit.name}
                         </h3>
                         <p>{benefit.description}</p>
+                        
+                        <!-- Botón PDF si está disponible -->
+                        {#if benefit.pdfUrl}
+                            <div class="mt-2">
+                                <a 
+                                    href={benefit.pdfUrl} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                                >
+                                    <i class="fas fa-file-pdf"></i>
+                                    {benefit.pdfButtonText || "View PDF"}
+                                </a>
+                            </div>
+                        {/if}
                     </div>
                 </div>
             {/each}
@@ -188,68 +247,193 @@
             The <span class="text-violet-400">Complete</span> Package
         </h5>
         <div
-            class="flex flex-col overflow-x-scroll gap-10 max-w-[800px] mx-auto w-full"
+            class="flex flex-col overflow-x-auto gap-10 max-w-[900px] mx-auto w-full"
         >
-            <table class="bg-white text-slate-700 rounded text-center">
-                <thead class={"border-b border-solid border-slate-200  "}>
-                    <tr class="">
-                        <th></th>
-                        <th class="whitespace-nowrap p-2 px-4">Candidate #1</th>
-                        <th class="whitespace-nowrap p-2 px-4">Candidate #2</th>
-                        <th class="whitespace-nowrap p-2 px-4">Candidate #3</th>
-                        <th
-                            class="bg-violet-700 text-white whitespace-nowrap p-4 px-8"
-                            >Me</th
-                        >
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-solid border-slate-200">
-                        <td
-                            class="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-sm"
-                            >Dedication</td
-                        >
-                        <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-green-500"></i></td>
-                    </tr>
-                    <tr class="border-b border-solid border-slate-200">
-                        <td
-                            class="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-sm"
-                            >Critical Thought</td
-                        >
-                        <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-green-500"></i></td>
-                    </tr>
-                    <tr>
-                        <td
-                            class="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-sm"
-                            >Interpersonal Skills</td
-                        >
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-green-500"></i></td>
-                    </tr>
-                    <tr class="border-t border-solid border-slate-200">
-                        <td
-                            class="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-sm"
-                            >Logical Reasoning</td
-                        >
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-xmark text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-slate-500"></i></td>
-                        <td><i class="fa-solid fa-check text-green-500"></i></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+                <table class="w-full text-center">
+                    <thead class="bg-gradient-to-r from-slate-800 to-slate-900">
+                        <tr>
+                            <th class="py-4 px-6 text-left text-slate-300 font-medium text-sm tracking-wider"></th>
+                            <th class="py-4 px-6 text-slate-300 font-medium text-sm tracking-wider">Candidate #1</th>
+                            <th class="py-4 px-6 text-slate-300 font-medium text-sm tracking-wider">Candidate #2</th>
+                            <th class="py-4 px-6 text-slate-300 font-medium text-sm tracking-wider">Candidate #3</th>
+                            <th class="py-4 px-8 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold text-sm tracking-wider relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+                                <span class="relative">Me ✨</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                        <tr class="hover:bg-slate-100/50 transition-colors duration-200">
+                            <td class="py-4 px-6 text-left font-semibold text-slate-700 bg-slate-50">Dedication</td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 bg-gradient-to-r from-violet-50 to-purple-50">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center shadow-lg">
+                                        <i class="fa-solid fa-check text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-100/50 transition-colors duration-200">
+                            <td class="py-4 px-6 text-left font-semibold text-slate-700 bg-slate-50">Critical Thought</td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 bg-gradient-to-r from-violet-50 to-purple-50">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center shadow-lg">
+                                        <i class="fa-solid fa-check text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-100/50 transition-colors duration-200">
+                            <td class="py-4 px-6 text-left font-semibold text-slate-700 bg-slate-50">Interpersonal Skills</td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 bg-gradient-to-r from-violet-50 to-purple-50">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center shadow-lg">
+                                        <i class="fa-solid fa-check text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-100/50 transition-colors duration-200">
+                            <td class="py-4 px-6 text-left font-semibold text-slate-700 bg-slate-50">Logical Reasoning</td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-xmark text-red-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-500 text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="py-4 px-6 bg-gradient-to-r from-violet-50 to-purple-50">
+                                <div class="flex justify-center">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 flex items-center justify-center shadow-lg">
+                                        <i class="fa-solid fa-check text-white text-sm"></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="mx-auto -mt-12 italic sm:hidden opacity-50">
             <p>Scroll to see more &rarr;</p>
         </div>
         <p class="mx-auto">So why not invest?</p>
     </section>
+    <!-- Contador de visitas global -->
+    <div class="w-full flex flex-col items-center justify-center py-12">
+        <div class="relative bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300">
+            <!-- Efecto de brillo -->
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-400 to-purple-400 rounded-2xl blur-xl opacity-30 animate-pulse"></div>
+            
+            <!-- Contenido del contador -->
+            <div class="relative z-10 text-center">
+                <div class="flex items-center justify-center mb-2">
+                    <i class="fas fa-eye text-white text-xl mr-2"></i>
+                    <span class="text-white text-sm font-medium tracking-wider uppercase">Total Visits</span>
+                </div>
+                
+                <div class="flex items-center justify-center">
+                    <span class="text-4xl md:text-5xl font-bold text-white tracking-tight" id="visit-counter">
+                        {#if isLoading}
+                            <span class="inline-block animate-pulse">●</span>
+                            <span class="inline-block animate-pulse animation-delay-200">●</span>
+                            <span class="inline-block animate-pulse animation-delay-400">●</span>
+                        {:else}
+                            <span class="transition-all duration-300 ease-out">
+                                {typeof visitCount === 'number' ? visitCount.toLocaleString() : visitCount}
+                            </span>
+                        {/if}
+                    </span>
+                </div>
+                
+                <!-- Línea decorativa -->
+                <div class="w-16 h-0.5 bg-white/30 mx-auto mt-3 rounded-full"></div>
+            </div>
+            
+            <!-- Decoración adicional -->
+            <div class="absolute top-2 right-2 w-3 h-3 bg-white/20 rounded-full animate-ping"></div>
+            <div class="absolute bottom-2 left-2 w-2 h-2 bg-white/15 rounded-full animate-bounce"></div>
+        </div>
+        
+        <!-- Texto adicional -->
+        <p class="text-slate-400 text-xs mt-4 opacity-75">Thanks for visiting my portfolio!</p>
+    </div>
 </main>
