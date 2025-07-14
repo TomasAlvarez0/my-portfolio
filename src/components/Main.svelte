@@ -1,4 +1,5 @@
 <script>
+    import { base } from '$app/paths';
     import Step from "./Step.svelte";
 
     let steps = [
@@ -33,7 +34,7 @@
             name: "Academic Excellence",
             description:
                 "Maintaining a strong academic performance with a General Average of 8.12 (eight point twelve) as of February 19, 2025. This reflects my dedication to academic excellence and continuous improvement in my engineering studies.",
-            pdfUrl: "/ANALITICO 2025.pdf",
+            pdfUrl: `${base}/ANALITICO 2025.pdf`,
             pdfButtonText: "View Academic Record"
         },
         {
@@ -166,7 +167,7 @@
                     Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.
                 </p>
             </Step>
-            <Step step={steps[2]} pdfUrl="/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
+            <Step step={steps[2]} pdfUrl="{base}/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
                 <p>
                     Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
                        > PESTLE, Porter's Five Forces, and the Value Chain</strong
