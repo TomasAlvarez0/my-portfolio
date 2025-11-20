@@ -17,9 +17,12 @@
     <div class= { "fixed bottom-0 w-full duration-300 flex p-10 z-[10]" + (
      y > 0 ? 'opacity-full pointer-events-auto' : 'pointer-events-none opacity-0' 
   )}>
-      <button on:click={goToTop} aria-label="Volver arriba" class="ml-auto rounded-full bg-slate-900 
-      text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer">
-        <i class="fa-solid fa-arrow-up grid place-items-center aspect-square"></i>
+      <button 
+        on:click={goToTop} 
+        aria-label="Scroll to top" 
+        class="ml-auto rounded-full bg-slate-900 text-violet-400 px-3 sm:px-4 hover:bg-slate-800 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-violet-400"
+      >
+        <i class="fa-solid fa-arrow-up grid place-items-center aspect-square" aria-hidden="true"></i>
       </button>
     </div>
     <Header y={y}/>

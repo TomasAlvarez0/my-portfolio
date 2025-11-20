@@ -7,7 +7,7 @@
             name: "Conectando corazones",
             icon: "fa-solid fa-hands-helping",
             description:
-                "Conectando corazones is a platform for connecting people in need with those who can help. It is a platform for connecting people in need with those who can help.",
+                "A platform for connecting people in need with those who can help. Built as a final project with collaborative features to facilitate community support and assistance.",
         },
         {
             name: "Smart Marketing",
@@ -55,36 +55,84 @@
     let visitCount = 0;
     let isLoading = true;
     
+    // Animaciones de scroll reveal
+    function observeElements() {
+        if (typeof IntersectionObserver === 'undefined' || typeof document === 'undefined') return;
+        
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+        
+        // Observar elementos después de que el DOM esté listo
+        setTimeout(() => {
+            const elementsToObserve = document.querySelectorAll('.scroll-reveal');
+            elementsToObserve.forEach((el) => observer.observe(el));
+        }, 100);
+    }
+    
     onMount(async () => {
         try {
             // Delay para mostrar la animación de carga
             await new Promise(resolve => setTimeout(resolve, 1000));
             
-            const res = await fetch('https://api.countapi.xyz/hit/tomi-portfolio/visits');
+            // Incrementar el contador (esto creará el namespace si no existe)
+            // CountAPI automáticamente crea el namespace y la clave si no existen
+            const res = await fetch('https://api.countapi.xyz/hit/tomi-portfolio/visits', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                mode: 'cors',
+                cache: 'no-store'
+            });
+            
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            
             const data = await res.json();
             
-            isLoading = false;
-            
-            // Animación de conteo progresivo
-            const targetCount = data.value;
-            const duration = 2000; // 2 segundos
-            const steps = 60;
-            const increment = targetCount / steps;
-            
-            let currentCount = 0;
-            const counter = setInterval(() => {
-                currentCount += increment;
-                if (currentCount >= targetCount) {
-                    currentCount = targetCount;
-                    clearInterval(counter);
-                }
-                visitCount = Math.floor(currentCount);
-            }, duration / steps);
+            // Verificar que la respuesta tenga el valor
+            if (data.value !== undefined && typeof data.value === 'number') {
+                isLoading = false;
+                const targetCount = data.value;
+                
+                // Animación de conteo progresivo
+                const duration = 2000; // 2 segundos
+                const steps = 60;
+                const increment = targetCount / steps;
+                
+                let currentCount = 0;
+                const counter = setInterval(() => {
+                    currentCount += increment;
+                    if (currentCount >= targetCount) {
+                        currentCount = targetCount;
+                        clearInterval(counter);
+                    }
+                    visitCount = Math.floor(currentCount);
+                }, duration / steps);
+            } else {
+                throw new Error('Invalid API response format');
+            }
             
         } catch (e) {
+            console.error('Error loading visit counter:', e);
             isLoading = false;
-            visitCount = 'Error';
+            visitCount = 0;
         }
+    });
+    
+    // Inicializar observador de scroll
+    onMount(() => {
+        observeElements();
     });
 </script>
 
@@ -108,7 +156,8 @@
                 href="https://wa.link/vqi4tk"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950"
+                class="blueShadow mx-auto lg:mr-auto lg:ml-0 text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-400"
+                aria-label="Contact me via WhatsApp"
             >
                 <div
                     class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
@@ -119,8 +168,11 @@
         <div class="relative shadow-2xl grid place-items-center ">
             <img
                 src={"images/profile.png"}
-                alt="Tomas Alvarez profile pic"
+                alt="Tomás Álvarez - Systems Engineering Student"
+                loading="lazy"
                 class="object-cover z-[2] max-h-[70vh]"
+                width="500"
+                height="600"
             />
         </div>
         <!-- <div  class="flex p-0.5 relative max-w-[700px] w-full mx-auto">
@@ -140,7 +192,7 @@
         </div> -->
     </section>
     <!-- PROJECTS -->
-    <section class=" py-20 lg:py-32 flex flex-col gap-24" id="projects">
+    <section class="py-20 lg:py-32 flex flex-col gap-24" id="projects">
         <div class="flex flex-col gap-2 text-center">
             <h6 class="text-large sm:text-xl md:text-2xl">
                 A few of my creative endeavors.
@@ -151,31 +203,37 @@
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
-            <Step step={steps[0]} pdfUrl="https://conectando-corazones.vercel.app/" pdfButtonText="Visit Website">
-                <p>
-                    {steps[0].description} Using:<strong
-                        class="text-violet-400"> Svelte, TailwindCSS, SvelteKit, PostgreSQL </strong
-                    >   Final project of the career, in a group with 2 collaborators</p>
-            </Step>
-            <Step step={steps[1]} pdfUrl="#" pdfButtonText="View Project Details">
-                <p>
-                    Data Mining with <strong
-                        class="text-violet-400">Python</strong
-                    >,
-                    <strong class="text-violet-400">RapidMiner & SPSS Statistics</strong
-                    >
-                    Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.
-                </p>
-            </Step>
-            <Step step={steps[2]} pdfUrl="{base}/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
-                <p>
-                    Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
-                       > PESTLE, Porter's Five Forces, and the Value Chain</strong
-                    >
-                    . The project included identifying a key problem and proposing a viable solution, including 
-                    <strong class="text-violet-400">feasibility analysis, budgeting, and solution implementation</strong>.                    
-                </p>
-            </Step>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <Step step={steps[0]} pdfUrl="https://conectando-corazones.vercel.app/" pdfButtonText="Visit Website">
+                    <p>
+                        {steps[0].description} Using:<strong
+                            class="text-violet-400"> Svelte, TailwindCSS, SvelteKit, PostgreSQL </strong
+                        >   Final project of the career, in a group with 2 collaborators</p>
+                </Step>
+            </div>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 100ms">
+                <Step step={steps[1]} pdfUrl="#" pdfButtonText="View Project Details">
+                    <p>
+                        Data Mining with <strong
+                            class="text-violet-400">Python</strong
+                        >,
+                        <strong class="text-violet-400">RapidMiner & SPSS Statistics</strong
+                        >
+                        Using a dataset of past customers, we applied various classification and prediction tools to implement smart marketing strategies. The goal was to offer different products tailored to the characteristics of potential clients.
+                    </p>
+                </Step>
+            </div>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 200ms">
+                <Step step={steps[2]} pdfUrl="{base}/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
+                    <p>
+                        Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
+                           > PESTLE, Porter's Five Forces, and the Value Chain</strong
+                        >
+                        . The project included identifying a key problem and proposing a viable solution, including 
+                        <strong class="text-violet-400">feasibility analysis, budgeting, and solution implementation</strong>.                    
+                    </p>
+                </Step>
+            </div>
         </div>
     </section>
     <!-- ABOUT ME-->

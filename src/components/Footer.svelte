@@ -13,20 +13,20 @@
                 
                 <!-- Redes Sociales -->
                 <div class="flex space-x-4">
-                    <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener noreferrer" 
-                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors">
+                    <a href="https://github.com/TomasAlvarez0" aria-label="GitHub Profile - Tomás Álvarez" target="_blank" rel="noopener noreferrer" 
+                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors duration-200">
                         <i class="fab fa-github text-white text-lg"></i>
                     </a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors">
+                    <a href="https://linkedin.com/in/tomasalvarez0" aria-label="LinkedIn Profile - Tomás Álvarez" target="_blank" rel="noopener noreferrer"
+                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors duration-200">
                         <i class="fab fa-linkedin-in text-white text-lg"></i>
                     </a>
-                    <a href="https://twitter.com" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors">
-                        <i class="fab fa-x-twitter text-white text-lg"></i>
+                    <a href="https://wa.link/vqi4tk" aria-label="WhatsApp Contact - Tomás Álvarez" target="_blank" rel="noopener noreferrer"
+                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors duration-200">
+                        <i class="fab fa-whatsapp text-white text-lg"></i>
                     </a>
-                    <a href="mailto:contact@tomasalvarez.dev" aria-label="Email" target="_blank" rel="noopener noreferrer"
-                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors">
+                    <a href="mailto:tomasalvarez0@example.com" aria-label="Email Contact - Tomás Álvarez" target="_blank" rel="noopener noreferrer"
+                       class="w-10 h-10 bg-slate-800 hover:bg-violet-600 rounded-full flex items-center justify-center transition-colors duration-200">
                         <i class="fas fa-envelope text-white text-lg"></i>
                     </a>
                 </div>
