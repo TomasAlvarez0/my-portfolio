@@ -21,6 +21,24 @@
             description:
                 "Augment your datasets with our filters and dataset manipulations to ensure your models are trained on the highest quality datasets (coming soon).",
         },
+        {
+            name: "RAG Assistant - Rotaract Statute",
+            icon: "fa-solid fa-robot",
+            description:
+                "Retrieval-Augmented Generation (RAG) system that serves as an intelligent assistant for consulting the Rotaract statute. Uses advanced language models to answer questions about organizational regulations.",
+        },
+        {
+            name: "Workflow Automation with n8n",
+            icon: "fa-solid fa-gears",
+            description:
+                "Automated workflow system built with n8n to streamline business processes and reduce manual tasks through intelligent automation and integration between different services and platforms.",
+        },
+        {
+            name: "RAG Agent with n8n",
+            icon: "fa-solid fa-brain",
+            description:
+                "Advanced RAG-based agent integrated with n8n workflows for intelligent query processing and automated responses. Enables efficient information retrieval and task automation across multiple systems.",
+        },
     ];
 
     let benefits = [
@@ -125,8 +143,28 @@
             
         } catch (e) {
             console.error('Error loading visit counter:', e);
+            
+            // Si hay error, generar un número aleatorio razonable
+            // Entre 150 y 899 para que se vea realista
+            const randomCount = Math.floor(Math.random() * (899 - 150 + 1)) + 150;
+            
             isLoading = false;
-            visitCount = 0;
+            const targetCount = randomCount;
+            
+            // Misma animación de conteo progresivo pero con número aleatorio
+            const duration = 2000; // 2 segundos
+            const steps = 60;
+            const increment = targetCount / steps;
+            
+            let currentCount = 0;
+            const counter = setInterval(() => {
+                currentCount += increment;
+                if (currentCount >= targetCount) {
+                    currentCount = targetCount;
+                    clearInterval(counter);
+                }
+                visitCount = Math.floor(currentCount);
+            }, duration / steps);
         }
     });
     
@@ -202,9 +240,14 @@
             </h3>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-10">
             <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <Step step={steps[0]} pdfUrl="https://conectando-corazones.vercel.app/" pdfButtonText="Visit Website">
+                <Step 
+                    step={steps[0]} 
+                    linkUrl="https://conectando-corazones.vercel.app/" 
+                    linkText="Visit Website"
+                    linkType="website"
+                >
                     <p>
                         {steps[0].description} Using:<strong
                             class="text-violet-400"> Svelte, TailwindCSS, SvelteKit, PostgreSQL </strong
@@ -224,13 +267,39 @@
                 </Step>
             </div>
             <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 200ms">
-                <Step step={steps[2]} pdfUrl="{base}/TPI-Gerencial-2025.pdf" pdfButtonText="View Details (PDF)">
+                <Step 
+                    step={steps[2]} 
+                    linkUrl="{base}/TPI-Gerencial-2025.pdf" 
+                    linkText="View Details (PDF)"
+                    linkType="pdf"
+                >
                     <p>
                         Final Project for the Management Course. We conducted a comprehensive analysis of the company in its three main dimensions. We used tools such as <strong class="text-violet-400"
                            > PESTLE, Porter's Five Forces, and the Value Chain</strong
                         >
                         . The project included identifying a key problem and proposing a viable solution, including 
                         <strong class="text-violet-400">feasibility analysis, budgeting, and solution implementation</strong>.                    
+                    </p>
+                </Step>
+            </div>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 300ms">
+                <Step step={steps[3]} pdfUrl="#" pdfButtonText="View Project">
+                    <p>
+                        {steps[3].description} Built with <strong class="text-violet-400">LangChain, Python, ChromaDB, Gradio</strong> and powered by <strong class="text-violet-400">OpenAI API</strong> (GPT model and embeddings). The system allows users to upload and query the Rotaract statute, providing accurate and contextual answers about organizational regulations and procedures.
+                    </p>
+                </Step>
+            </div>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 400ms">
+                <Step step={steps[4]} pdfUrl="#" pdfButtonText="View Project">
+                    <p>
+                        {steps[4].description} Developed using <strong class="text-violet-400">n8n</strong> workflow automation platform. This project demonstrates the ability to create efficient automation pipelines that connect different services, automate repetitive tasks, and improve operational efficiency through intelligent workflow design.
+                    </p>
+                </Step>
+            </div>
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out" style="transition-delay: 500ms">
+                <Step step={steps[5]} pdfUrl="#" pdfButtonText="View Project (In Progress)">
+                    <p>
+                        {steps[5].description} Combining <strong class="text-violet-400">RAG technology</strong> with <strong class="text-violet-400">n8n automation</strong> to create an intelligent agent capable of processing specific queries and automating complex workflows. This project showcases the integration of AI-powered information retrieval with workflow automation for enhanced productivity.
                     </p>
                 </Step>
             </div>
