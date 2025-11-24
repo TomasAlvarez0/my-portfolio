@@ -66,11 +66,9 @@
             </a>
         {/each}
         <a
-            href="{base}/AlvarezMartinTomas_IngSistemas.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#resume"
             class="blueShadow relative overflow-hidden px-5 py-2 group rounded-full bg-violet-600 text-white"
-            aria-label="Download Resume PDF"
+            aria-label="Scroll to resume section"
         >
             <div class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"></div>
             <h4 class="relative z-9">Resume</h4>
@@ -121,9 +119,7 @@
                     </a>
                 {/each}
                 <a
-                    href="{base}/AlvarezMartinTomas_IngSistemas.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#resume"
                     class="px-6 py-3 rounded-full bg-violet-600 text-white font-medium hover:bg-violet-700 transition-colors duration-200"
                     on:click={handleLinkClick}
                 >

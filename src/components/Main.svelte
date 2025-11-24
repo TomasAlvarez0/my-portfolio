@@ -67,6 +67,89 @@
         },
     ];
 
+    const resumeContact = [
+        { label: "Location", value: "Arrecifes, Buenos Aires · Rosario, Santa Fe", icon: "fa-solid fa-location-dot" },
+        { label: "Phone", value: "2478 513 656", icon: "fa-solid fa-phone", href: "tel:+542478513656" },
+        { label: "Email", value: "alvarezmt8@gmail.com", icon: "fa-solid fa-envelope", href: "mailto:alvarezmt8@gmail.com" },
+        { label: "Website", value: "tomasalvarez0.github.io/myportfolio", icon: "fa-solid fa-globe", href: "https://tomasalvarez0.github.io/myportfolio", external: true }
+    ];
+
+    const resumeProfile = "Advanced Systems Engineering student with strong foundations in data analysis, cybersecurity, and AI solutions (RAG/LLMs). Experienced in project management and process optimization, seeking to combine technical skills with business vision to deliver secure and impactful solutions.";
+
+    const resumeExperience = [
+        {
+            role: "Socio de Rotaract Club Arrecifes",
+            period: "2024 – Present",
+            details: [
+                "Budget management and financial allocation for social impact projects.",
+                "Leadership of multidisciplinary teams with Excel-based reporting and KPIs."
+            ]
+        }
+    ];
+
+    const resumeLanguages = [
+        { language: "Spanish", level: "Native" },
+        { language: "English", level: "B1 Technical · Technical documentation reading" }
+    ];
+
+    const resumeEducation = {
+        institution: "UTN Facultad Regional Rosario",
+        period: "2020 – 2025",
+        degree: "Ingeniería en Sistemas de Información",
+        status: "2 subjects + final project pending"
+    };
+
+    const resumeSkills = [
+        {
+            title: "Data Analysis & BI",
+            items: ["Excel (advanced)", "Power BI", "SQL", "ETL", "Power Query"]
+        },
+        {
+            title: "Artificial Intelligence",
+            items: ["RAG architectures", "Embeddings", "AI Agents", "LLMs (OpenAI)", "LangChain"]
+        },
+        {
+            title: "Cybersecurity",
+            items: ["Kali Linux (nMap, Nikto, SQLMap, Metasploit)", "Vulnerability analysis", "ISO 27001/27002"]
+        },
+        {
+            title: "Automation & Management",
+            items: ["n8n workflows", "ERP/MRP/CRP concepts", "Strategic planning", "Scrum"]
+        },
+        {
+            title: "Development & Tools",
+            items: ["GitHub", "HTML/CSS", "JavaScript", "Svelte", "SvelteKit"]
+        }
+    ];
+
+    const resumeProjects = [
+        {
+            name: "Asistente inteligente con RAG",
+            description: "Question-answering assistant over institutional regulations/statutes.",
+            stack: "LangChain, Python, Gradio, OpenAI Embeddings & GPT"
+        },
+        {
+            name: "Bot de automatización con n8n",
+            description: "Automated order intake bot connected to WhatsApp with AI for customer support.",
+            stack: "n8n, WhatsApp integration, LLM-based intent handling"
+        },
+        {
+            name: "Conectando Corazones",
+            description: "Platform connecting institutions and collaborators (final career project).",
+            stack: "JavaScript, Node.js, PostgreSQL, Svelte"
+        },
+        {
+            name: "Marketing inteligente",
+            description: "Predictive marketing with classification algorithms using client datasets.",
+            stack: "Python, Pandas, Matplotlib, RapidMiner"
+        },
+        {
+            name: "Análisis Estratégico URG",
+            description: "Strategic diagnosis using PESTLE and Porter’s Five Forces.",
+            stack: "Business analysis, process optimization"
+        }
+    ];
+
     // Lógica para el contador de visitas con CountAPI
     import { onMount } from 'svelte';
     
@@ -188,7 +271,7 @@
                 <span class="poppins text-violet-400">engineer</span>
             </h2>
             <p class="text-base sm:text-lg md:text-xl">
-                Systems Engineering student passionate about <span class="text-violet-400">technology</span> and <span class="text-violet-400">sports</span>. Currently learning and exploring the world of programming, software development, and system analysis. Always eager to take on new challenges and grow professionally.
+                Soy Martín Tomás Alvarez, futuro Ingeniero en Sistemas con experiencia práctica en análisis de datos (<span class="text-violet-400">SQL, Power BI</span>) y gestión estratégica. Mi portafolio se centra en la aplicación de tecnologías de vanguardia como <span class="text-violet-400">Arquitecturas RAG</span> para IA y metodologías de <span class="text-violet-400">Ciberseguridad (ISO 27001, Kali Linux)</span>. Actualmente busco mi primera experiencia profesional para aportar una visión que equilibre la excelencia técnica y el impacto en el negocio.
             </p>
             <a
                 href="https://wa.link/vqi4tk"
@@ -524,6 +607,166 @@
             <p>Scroll to see more &rarr;</p>
         </div>
         <p class="mx-auto">So why not invest?</p>
+    </section>
+    <!-- RESUME -->
+    <section id="resume" class="py-20 lg:py-28 flex flex-col gap-16">
+        <div class="flex flex-col gap-2 text-center">
+            <h6 class="text-large sm:text-xl md:text-2xl uppercase tracking-[0.2em] text-violet-300">
+                Curriculum
+            </h6>
+            <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
+                Snapshot of my <span class="poppins text-violet-400">professional</span> profile
+            </h3>
+            <p class="text-slate-300 max-w-3xl mx-auto">
+                All the highlights from my resume, including contact information, academic background, voluntary experience, and the blend of technical + business skills that I bring to every project.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+                <a
+                    href="{base}/AlvarezMartinTomas_IngSistemas.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white font-semibold transition-all duration-200"
+                >
+                    <i class="fas fa-file-pdf"></i>
+                    View PDF resume
+                </a>
+                <span class="text-sm text-slate-400">Updated 2025 · Full curriculum</span>
+            </div>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_1.9fr]">
+            <!-- Left column -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 shadow-2xl shadow-violet-900/20">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-2xl font-semibold">Contact</h4>
+                        <span class="text-sm uppercase tracking-wide text-violet-300">Let's connect</span>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        {#each resumeContact as item}
+                            <a
+                                class="flex items-center gap-4 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors duration-200"
+                                href={item.href ?? undefined}
+                                target={item.external ? "_blank" : undefined}
+                                rel={item.external ? "noopener noreferrer" : undefined}
+                            >
+                                <div class="w-10 h-10 rounded-2xl bg-violet-600/20 text-violet-300 flex items-center justify-center text-xl">
+                                    <i class={item.icon}></i>
+                                </div>
+                                <div class="flex flex-col text-left">
+                                    <span class="text-xs uppercase tracking-widest text-slate-400">{item.label}</span>
+                                    <span class="text-white text-lg font-medium">{item.value}</span>
+                                </div>
+                            </a>
+                        {/each}
+                    </div>
+                    <div class="mt-6">
+                        <a
+                            href="{base}/AlvarezMartinTomas_IngSistemas.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white font-semibold transition-all duration-200"
+                        >
+                            <i class="fas fa-file-pdf"></i>
+                            Download full resume
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6">
+                    <h4 class="text-2xl font-semibold mb-3">Professional Profile</h4>
+                    <p class="text-slate-300 leading-relaxed">
+                        {resumeProfile}
+                    </p>
+                </div>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6">
+                    <h4 class="text-2xl font-semibold mb-4">Languages</h4>
+                    <ul class="space-y-3">
+                        {#each resumeLanguages as lang}
+                            <li class="flex items-center justify-between p-3 rounded-2xl bg-white/5">
+                                <span class="text-lg font-medium">{lang.language}</span>
+                                <span class="text-sm uppercase tracking-wide text-violet-300">{lang.level}</span>
+                            </li>
+                        {/each}
+                    </ul>
+                </div>
+            </div>
+            <!-- Right column -->
+            <div class="flex flex-col gap-6">
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-2xl font-semibold">Experience (Volunteering)</h4>
+                        <span class="text-sm uppercase tracking-wide text-violet-300">Impact & leadership</span>
+                    </div>
+                    <div class="space-y-6">
+                        {#each resumeExperience as exp}
+                            <div class="p-4 rounded-2xl bg-white/5">
+                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                                    <h5 class="text-xl font-semibold">{exp.role}</h5>
+                                    <span class="text-sm text-violet-300">{exp.period}</span>
+                                </div>
+                                <ul class="list-disc list-inside text-slate-300 space-y-2 text-sm sm:text-base">
+                                    {#each exp.details as detail}
+                                        <li>{detail}</li>
+                                    {/each}
+                                </ul>
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 grid gap-6 lg:grid-cols-2">
+                    <div>
+                        <h4 class="text-2xl font-semibold mb-3">Education</h4>
+                        <p class="text-lg font-medium">{resumeEducation.institution}</p>
+                        <p class="text-sm text-violet-300">{resumeEducation.period}</p>
+                        <p class="mt-2 text-slate-300">{resumeEducation.degree}</p>
+                        <p class="text-sm text-slate-400">{resumeEducation.status}</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-semibold mb-3">Core Skills</h4>
+                        <div class="space-y-3">
+                            {#each resumeSkills.slice(0, 2) as skill}
+                                <div class="p-3 rounded-2xl bg-white/5">
+                                    <p class="text-sm uppercase tracking-wide text-violet-300">{skill.title}</p>
+                                    <p class="text-slate-200 text-sm mt-1">{skill.items.join(", ")}</p>
+                                </div>
+                            {/each}
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6">
+                    <h4 class="text-2xl font-semibold mb-4">Full Skillset</h4>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        {#each resumeSkills as skill}
+                            <div class="p-4 rounded-2xl bg-white/5">
+                                <p class="text-sm uppercase tracking-wide text-violet-300">{skill.title}</p>
+                                <ul class="mt-2 space-y-1 text-slate-200 text-sm">
+                                    {#each skill.items as item}
+                                        <li class="flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+                                            {item}
+                                        </li>
+                                    {/each}
+                                </ul>
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+                <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6">
+                    <div class="flex flex-col gap-2 mb-4">
+                        <h4 class="text-2xl font-semibold">Featured Projects</h4>
+                        <p class="text-slate-300 text-sm">Academic + personal initiatives that showcase my breadth.</p>
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        {#each resumeProjects as project}
+                            <div class="p-4 rounded-2xl bg-white/5">
+                                <p class="text-lg font-semibold">{project.name}</p>
+                                <p class="text-slate-300 text-sm mt-1">{project.description}</p>
+                                <p class="text-xs uppercase tracking-wide text-violet-300 mt-2">{project.stack}</p>
+                            </div>
+                        {/each}
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Contador de visitas global -->
     <div class="w-full flex flex-col items-center justify-center py-12">
